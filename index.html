@@ -81,6 +81,18 @@ body::-webkit-scrollbar-thumb {
   pointer-events: none;
 }
 
+.header-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: 0 auto 1rem auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border-radius: 1rem;
+}
+
+
 .inst-name {
   font-size: 1.85rem;
   font-weight: 900;
@@ -562,6 +574,7 @@ body::-webkit-scrollbar-thumb {
   .act-grid { gap: 0.8rem; }
   .act-btn { font-size: 0.85rem; padding: 1rem 0.7rem; }
   .ch-btn, .addr-btn { width: 70px; height: 70px; }
+  .header-image { width: 90px; height: 90px; }
 }
 
 /* ═══ ANIMATIONS ═══ */
@@ -604,6 +617,7 @@ body::-webkit-scrollbar-thumb {
 
     <!-- Header Card -->
     <div class="header-card fade-in">
+      <img src="1PNG.png" alt="لوگوی پژوهش‌سرای فرهنگ ورامین" class="header-image">
       <div class="inst-name">🏛️ پژوهش‌سرای فرهنگ ورامین</div>
       <div class="inst-sub">🤖 قطب استانی رباتیک و هوش مصنوعی</div>
       <div class="director-row">👨‍💼 مدیر: محمد شیرکوند</div>
@@ -623,7 +637,7 @@ body::-webkit-scrollbar-thumb {
       <div class="sec-title">راه‌های ارتباطی</div>
       <div class="contact-row">
         <div class="c-content">
-          <a href="tel:036244660">📞 036244660</a>
+          <a href="tel:02136244660">📞 02136244660</a>
           <a href="tel:09370073475">📱 09370073475</a>
         </div>
       </div>
@@ -676,12 +690,14 @@ body::-webkit-scrollbar-thumb {
             <img src="https://waze-media.s3.amazonaws.com/html/www/images/waze-logo.png" alt="ویز">
             <span>ویز</span>
           </a>
-          <a href="https://neshan.app/maps/search/%D9%BE%DA%98%D9%88%D9%87%D8%B4%20%D8%B3%D8%B1%D8%A7%DB%8C%20%D9%81%D8%B1%D9%87%D9%86%DA%AF%20%D9%88%D8%B1%D8%A7%D9%85%DB%8C%D9%86"
+          <a href="https://neshan.org/maps/@35.3265,51.6498,18z"
+
             target="_blank" rel="noopener" class="addr-btn">
             <img src="https://static.neshan.org/sdk/docs/img/logo.png" alt="نشان">
             <span>نشان</span>
           </a>
-          <a href="https://balad.ir/search/%D9%BE%DA%98%D9%88%D9%87%D8%B4+%D8%B3%D8%B1%D8%A7%DB%8C+%D9%81%D8%B1%D9%87%D9%86%DA%AF+%D9%88%D8%B1%D8%A7%D9%85%DB%8C%D9%86"
+          <a href="https://balad.ir/p/35.3265,51.6498"
+
             target="_blank" rel="noopener" class="addr-btn">
             <img src="https://balad.ir/images/logo.png" alt="بلد">
             <span>بلد</span>
@@ -697,7 +713,6 @@ body::-webkit-scrollbar-thumb {
 
   </div>
 </div>
-
 
 <!-- ═══════════════ PAGE 2: DETAIL ═══════════════ -->
 <div id="detail" class="page">
@@ -751,7 +766,6 @@ body::-webkit-scrollbar-thumb {
   </div>
 </div>
 
-
 <script>
 
 // Activities Data
@@ -764,7 +778,14 @@ const activities = [
     time: "به زودی"
   },
   {
-    name: "کامپیوتر و برنامه‌نویسی",
+    name: "کامپیوتر",
+    instructor: "نازنین بختیاری",
+    specialty: "مهارت‌های کامپیوتر",
+    date: "به زودی",
+    time: "به زودی"
+  },
+  {
+    name: "برنامه‌نویسی",
     instructor: "نازنین بختیاری",
     specialty: "برنامه‌نویسی و الگوریتم",
     date: "به زودی",
@@ -891,7 +912,6 @@ const activities = [
   }
 ];
 
-
 // Populate Activity Grid
 const grid = document.getElementById("actGrid");
 
@@ -904,10 +924,8 @@ activities.forEach((act, i) => {
   grid.appendChild(btn);
 });
 
-
 // Open Detail Page
 function openDetail(idx) {
-
   const act = activities[idx];
 
   document.getElementById("detailTitle").textContent = act.name;
@@ -922,14 +940,12 @@ function openDetail(idx) {
   window.scrollTo(0,0);
 }
 
-
 // Go Home
 function goHome() {
   document.getElementById("detail").classList.remove("active");
   document.getElementById("home").classList.add("active");
   window.scrollTo(0,0);
 }
-
 
 // Scroll Animation
 const observer = new IntersectionObserver((entries) => {
